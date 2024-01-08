@@ -20,6 +20,7 @@ namespace GTarefasMe.Controller
         private ConnectionFactory conn;
         HomeTechLeaderForm HomeTLForm;
         private InserirTarefaForm inserirTarefaForm;
+        private CadastroForm cadastroForm;
 
 
         public TechLeaderController(HomeTechLeaderForm homeTLForm)
@@ -67,13 +68,13 @@ namespace GTarefasMe.Controller
             ConfigurarComboBoxAlt();
             if (HomeTLForm.dataGridViewTarefas.SelectedRows.Count > 0)
             {
-                // Obter a tarefa da linha selecionada
+               
                 TarefaViewModel tarefaSelecionada = (TarefaViewModel)HomeTLForm.dataGridViewTarefas.SelectedRows[0].DataBoundItem;
 
-                // Exibir detalhes da tarefa nos controles de edição no formulário
+                
                 HomeTLForm.textBox1.Text = tarefaSelecionada.Descricao;
 
-                // Preencher o ComboBox com opções de responsáveis da DAO
+               
                 List<Usuario> usuarios = usuarioDAO.Listar();
                 HomeTLForm.setVisible(true);
                 HomeTLForm.comboBox1.DisplayMember = "Nome"; 
@@ -217,7 +218,22 @@ namespace GTarefasMe.Controller
             FiltrarTarefasTechLeader(situacao);
         }
 
+        public void CadastroUsuario(Login usuarioAutenticado)
+        {
+            if (cadastroForm == null || cadastroForm.IsDisposed)
+            {
+                cadastroForm = new CadastroForm(usuarioAutenticado);
+                cadastroForm.Show();
+            }
+            else
+            {
 
+                cadastroForm.BringToFront();
+            }
+
+            this.HomeTLForm.Hide();
+
+        }
 
         public void NovaTarefa(Login usuarioAutenticado)
         {

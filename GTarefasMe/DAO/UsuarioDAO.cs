@@ -84,8 +84,43 @@ namespace GTarefasMe.DAO
             return usuarios;
         }
 
-        public void InserirDesenvolvedor(Desenvolvedor usuario)
+        /*  public void InserirDesenvolvedor(Desenvolvedor usuario)
+          {
+              using (MySqlConnection conexao = connectionFactory.CriarConexao())
+              {
+                  conexao.Open();
+                  using (MySqlTransaction transaction = conexao.BeginTransaction())
+                  {
+                      try
+                      {
+
+                          if (usuario.Endereco != null && usuario.Endereco.Id == null)
+                          {
+                              InserirEndereco(conexao, usuario.Endereco, transaction);
+                          }
+
+
+                          string query = "INSERT INTO Usuario (Nome, Sobrenome, EnderecoId, CPF, TipoUsuario, Time, Situacao, DataAdmissao, DataDemissao) VALUES (@Nome, @Sobrenome, @EnderecoId, @CPF, @TipoUsuario, @Time, @Situacao, @DataAdmissao, @DataDemissao)";
+                          MySqlCommand cmd = new MySqlCommand(query, conexao, transaction);
+
+                          PreencherParametrosDev(cmd, usuario);
+                          cmd.ExecuteNonQuery();
+
+                          transaction.Commit();
+                      }
+                      catch (Exception)
+                      {
+                          transaction.Rollback();
+                          throw;
+                      }
+                  }
+              }
+          }*/
+
+        public int InserirDesenvolvedor(Desenvolvedor usuario)
         {
+            int idInserido = -1; // Valor padrão se algo der errado
+
             using (MySqlConnection conexao = connectionFactory.CriarConexao())
             {
                 conexao.Open();
@@ -93,18 +128,19 @@ namespace GTarefasMe.DAO
                 {
                     try
                     {
-
                         if (usuario.Endereco != null && usuario.Endereco.Id == null)
                         {
-                            InserirEndereco(conexao, usuario.Endereco, transaction);
+                            int idEndereco = InserirEndereco(conexao, usuario.Endereco, transaction);
+                            usuario.Endereco.SetId(idEndereco);
                         }
 
-
-                        string query = "INSERT INTO Usuario (Nome, Sobrenome, EnderecoId, CPF, TipoUsuario, Time, Situacao, DataAdmissao, DataDemissao) VALUES (@Nome, @Sobrenome, @EnderecoId, @CPF, @TipoUsuario, @Time, @Situacao, @DataAdmissao, @DataDemissao)";
+                        string query = "INSERT INTO Usuario (Nome, Sobrenome, EnderecoId, CPF, TipoUsuario, Time, Situacao, DataAdmissao, DataDemissao) VALUES (@Nome, @Sobrenome, @EnderecoId, @CPF, @TipoUsuario, @Time, @Situacao, @DataAdmissao, @DataDemissao); SELECT LAST_INSERT_ID();";
                         MySqlCommand cmd = new MySqlCommand(query, conexao, transaction);
 
                         PreencherParametrosDev(cmd, usuario);
-                        cmd.ExecuteNonQuery();
+
+                        // ExecuteScalar retorna o resultado da primeira coluna da primeira linha
+                        idInserido = Convert.ToInt32(cmd.ExecuteScalar());
 
                         transaction.Commit();
                     }
@@ -115,7 +151,10 @@ namespace GTarefasMe.DAO
                     }
                 }
             }
+
+            return idInserido;
         }
+
 
 
         public void UpdateDesenvolvedor(Desenvolvedor usuario)
@@ -153,19 +192,7 @@ namespace GTarefasMe.DAO
             }
         }
 
-        public void InserirTechLeader(TechLeader usuario)
-        {
-            using (MySqlConnection conexao = connectionFactory.CriarConexao())
-            {
-                conexao.Open();
-                string query = "INSERT INTO Usuario (Nome, Sobrenome, EnderecoId, CPF, TipoUsuario, Time, Situacao, DataAdmissao, DataDemissao) VALUES (@Nome, @Sobrenome, @EnderecoId, @CPF, @TipoUsuario, @Time, @Situacao, @DataAdmissao, @DataDemissao)";
-                MySqlCommand cmd = new MySqlCommand(query, conexao);
-
-                PreencherParametrosDev(cmd, usuario);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
+    
 
         public void UpdateTechLeader(TechLeader usuario)
         {
@@ -216,7 +243,7 @@ namespace GTarefasMe.DAO
         {
             cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
             cmd.Parameters.AddWithValue("@Sobrenome", usuario.Sobrenome);
-            PreencherParametrosEndereco(cmd, usuario.Endereco);
+            cmd.Parameters.AddWithValue("@EnderecoId", usuario.Endereco.Id);
             cmd.Parameters.AddWithValue("@CPF", usuario.CPF);
             cmd.Parameters.AddWithValue("@TipoUsuario", usuario.TipoUsuario);
             cmd.Parameters.AddWithValue("@Time", usuario.Time);
@@ -267,18 +294,18 @@ namespace GTarefasMe.DAO
                 cmd.Parameters.AddWithValue("@Estado", endereco.Estado);
                 cmd.Parameters.AddWithValue("@CEP", endereco.CEP);
             }
-            private void InserirEndereco(MySqlConnection conexao, Endereco endereco, MySqlTransaction transaction)
-            {
-                string query = "INSERT INTO Endereco (Numero, Logradouro, Cidade, Estado, CEP) VALUES (@Numero, @Logradouro, @Cidade, @Estado, @CEP)";
-                MySqlCommand cmd = new MySqlCommand(query, conexao, transaction);
+             private int InserirEndereco(MySqlConnection conexao, Endereco endereco, MySqlTransaction transaction)
+        {
+            string query = "INSERT INTO Endereco (Numero, Logradouro, Cidade, Estado, CEP) VALUES (@Numero, @Logradouro, @Cidade, @Estado, @CEP); SELECT LAST_INSERT_ID();";
+            MySqlCommand cmd = new MySqlCommand(query, conexao, transaction);
 
-                PreencherParametrosEndereco(cmd, endereco);
-                cmd.ExecuteNonQuery();
+            PreencherParametrosEndereco(cmd, endereco);
 
-                endereco.SetId((int)cmd.LastInsertedId);
-            }
+            // ExecuteScalar retorna o resultado da primeira coluna da primeira linha
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
 
-            private void AtualizarEndereco(MySqlConnection conexao, Endereco endereco, MySqlTransaction transaction)
+        private void AtualizarEndereco(MySqlConnection conexao, Endereco endereco, MySqlTransaction transaction)
             {
                 string query = "UPDATE Endereco SET Numero = @Numero, Logradouro = @Logradouro, Cidade = @Cidade, Estado = @Estado, CEP = @CEP WHERE Id = @EnderecoId";
                 MySqlCommand cmd = new MySqlCommand(query, conexao, transaction);

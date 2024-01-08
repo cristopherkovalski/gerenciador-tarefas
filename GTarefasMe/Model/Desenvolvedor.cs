@@ -14,7 +14,7 @@ namespace GTarefasMe.Model
         public DateTime? DataDemissao { get; private set; }
         
 
-        public Desenvolvedor(int id, string nome, string sobrenome, Endereco endereco, TipoUsuario tipoUsuario, string cpf, string time, string situacao, DateTime dataAdmissao, DateTime? dataDemissao) : base(id, nome, sobrenome, endereco, tipoUsuario, cpf)
+        public Desenvolvedor(int? id, string nome, string sobrenome, Endereco endereco, TipoUsuario tipoUsuario, string cpf, string time, string situacao, DateTime dataAdmissao, DateTime? dataDemissao) : base(id, nome, sobrenome, endereco, tipoUsuario, cpf)
         {
             Time = time;
             Situacao = situacao;
@@ -22,9 +22,7 @@ namespace GTarefasMe.Model
             DataDemissao = dataDemissao;
         }
 
-        public Desenvolvedor(int id, string nome, string sobrenome, Endereco endereco, TipoUsuario tipoUsuario, string cpf, string time) : base(id, nome, sobrenome, endereco, tipoUsuario, cpf)
-        {
-        }
+      
 
         public Desenvolvedor()
         {

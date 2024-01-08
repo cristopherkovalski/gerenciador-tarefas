@@ -9,14 +9,14 @@ namespace GTarefasMe
 {
     public class Login : ILogin
     {
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         public string Senha { get; private set; }
         public string Email { get; private set; }
         public Enum TipoUsuario { get; private set; }
 
         public int UserId { get; private set; }
 
-        public Login(int id, string senha, string email, Enum tipoUsuario, int userId)
+        public Login(int? id, string senha, string email, Enum tipoUsuario, int userId)
         {
             Id = id;
             Senha = senha;

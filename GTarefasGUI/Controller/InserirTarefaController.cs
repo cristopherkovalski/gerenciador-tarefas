@@ -12,7 +12,6 @@ namespace GTarefasGUI.Controller
     {
         private UsuarioDAO usuarioDAO;
         private TarefaDAO tarefaDAO;
-        private LoginDAO loginDAO;
         private ConnectionFactory conn;
         private static InserirTarefaForm InserirTarefaForm;
         private static HomeTechLeaderForm HomeTechLeaderForm;
@@ -21,7 +20,7 @@ namespace GTarefasGUI.Controller
         public InserirTarefaController(InserirTarefaForm inserirTForm)
         {
             this.conn = new ConnectionFactory();
-            this.loginDAO = new LoginDAO(conn);
+           
             this.tarefaDAO = new TarefaDAO(conn);
             this.usuarioDAO = new UsuarioDAO(conn);
             InserirTarefaForm = inserirTForm;

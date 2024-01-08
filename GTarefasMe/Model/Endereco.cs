@@ -10,7 +10,7 @@ namespace GTarefasMe.Model
     {
         public int? Id { get; private set; }
         public string Numero {  get; private set; }
-    public string Logradouro { get; private set; }
+        public string Logradouro { get; private set; }
         public string Cidade { get; private set; }
         public string Estado { get; private set; }
         public string CEP { get; private set; }

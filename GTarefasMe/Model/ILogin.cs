@@ -8,7 +8,7 @@ namespace GTarefasMe.Model
 {
     internal interface ILogin
     {
-        int Id { get;}
+        int? Id { get;}
         string Senha { get; }
         string Email { get; }
         Enum TipoUsuario { get; }
