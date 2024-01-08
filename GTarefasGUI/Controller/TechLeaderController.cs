@@ -63,6 +63,8 @@ namespace GTarefasMe.Controller
         }
         public void AlterarTarefa()
         {
+            HomeTLForm.setDataGridActionsVisible(false);
+            ConfigurarComboBoxAlt();
             if (HomeTLForm.dataGridViewTarefas.SelectedRows.Count > 0)
             {
                 // Obter a tarefa da linha selecionada
@@ -91,18 +93,18 @@ namespace GTarefasMe.Controller
             try
             {
                 TarefaViewModel tarefaSelecionadaAtual = (TarefaViewModel)HomeTLForm.dataGridViewTarefas.SelectedRows[0].DataBoundItem;
-              
+                
                 if (tarefaSelecionadaAtual != null)
                 {
                  
                     string novaDescricao = HomeTLForm.textBox1.Text;
                     int novoResponsavelId = Convert.ToInt32(HomeTLForm.comboBox1.SelectedValue);
-
-                    tarefaDAO.AtualizarTarefa((int)tarefaSelecionadaAtual.Id, novaDescricao, novoResponsavelId);
-
+                    string situacao = HomeTLForm.comboBox3.Text;
+                    tarefaDAO.AtualizarTarefa((int)tarefaSelecionadaAtual.Id, novaDescricao, novoResponsavelId, situacao);
                     HomeTLForm.ApresentarMensagem("Atualizado com sucesso!");
                     LimparControles();
                     ListarTarefas();
+                    
                 }
                 else
                 {
@@ -188,7 +190,25 @@ namespace GTarefasMe.Controller
             };
 
             HomeTLForm.comboBox2.DataSource = opcoesSituacao;
+            
+
         }
+        public void ConfigurarComboBoxAlt()
+        {
+            List<string> opcoesSituacao = new List<string>
+            {
+                "Em Andamento",
+                "Concluida",
+                "Abandonada",
+                "Com Impedimento",
+                "Em Analise",
+                "A Ser Aprovada"
+            };
+
+            HomeTLForm.comboBox3.DataSource = opcoesSituacao;
+
+        }
+
 
 
         public void AplicarFiltrosTechLeader()

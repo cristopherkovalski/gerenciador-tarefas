@@ -41,6 +41,8 @@
             button6 = new Button();
             comboBox2 = new ComboBox();
             label3 = new Label();
+            comboBox3 = new ComboBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -117,7 +119,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(500, 357);
+            button4.Location = new Point(498, 373);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 8;
@@ -159,11 +161,30 @@
             label3.TabIndex = 12;
             label3.Text = "Filtrar Por Situação:";
             // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(458, 329);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(167, 23);
+            comboBox3.TabIndex = 13;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(498, 311);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 15);
+            label4.TabIndex = 14;
+            label4.Text = "Alterar Situação";
+            // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(comboBox3);
             Controls.Add(label3);
             Controls.Add(comboBox2);
             Controls.Add(button6);
@@ -199,5 +220,7 @@
         private Button button6;
         public ComboBox comboBox2;
         private Label label3;
+        public ComboBox comboBox3;
+        private Label label4;
     }
 }

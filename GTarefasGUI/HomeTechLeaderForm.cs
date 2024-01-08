@@ -110,7 +110,9 @@ namespace GTarefasGUI
                 label1.Hide();
                 label2.Hide();
                 comboBox1.Hide();
+                comboBox3.Hide();
                 textBox1.Hide();
+                label4.Hide();
                 button4.Hide();
              
             }
@@ -118,6 +120,7 @@ namespace GTarefasGUI
                 label1.Show();
                 label2.Show();
                 comboBox1.Show();
+                comboBox3.Show();
                 textBox1.Show();
                 button4.Show();
                 dataGridViewTarefas.Hide();
