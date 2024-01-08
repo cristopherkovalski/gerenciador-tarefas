@@ -149,10 +149,11 @@ namespace GTarefasMe.DAO
                 {
                     conexao.Open();
 
-                    string query = "UPDATE Tarefa SET Status = @Status WHERE Id = @TarefaId";
+                    string query = "UPDATE Tarefa SET Status = @Status, DataFim = @DataFim WHERE Id = @TarefaId";
                     MySqlCommand cmd = new MySqlCommand(query, conexao);
 
                     cmd.Parameters.AddWithValue("@Status", "Concluida");
+                    cmd.Parameters.AddWithValue("@DataFim", DateTime.Now);
                     cmd.Parameters.AddWithValue("@TarefaId", tarefaId);
 
                     cmd.ExecuteNonQuery();
