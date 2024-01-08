@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GTarefasGUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f793f79276e1dbdf8a58168980bde11caa1f720")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b0a859d842514ad72bc86f529e0207389c0b6e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("GTarefasGUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GTarefasGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -35,6 +35,7 @@ namespace GTarefasGUI
             button2.Click += (sender, e) => controller.ListarTarefas();
             button3.Click += (sender, e) => controller.AlterarTarefa();
             button4.Click += (sender, e) => controller.AtualizarTarefa();
+            button5.Click += (sender, e) => controller.ConcluirTarefa();
         }
 
         private void ConfigurarManipulacaoLinhas()
@@ -49,14 +50,16 @@ namespace GTarefasGUI
 
                   
                     button3.Show();
-
+                    button5.Show();
                     
                     button3.Enabled = (situacao != "Concluida");
+                    button5.Enabled = (situacao != "Concluida"); 
                 }
                 else
                 {
                     // Se não houver linhas selecionadas, ocultar os botões
-                   button3.Hide();  
+                   button3.Hide();
+                   button5.Hide();
                 }
 
             };
@@ -99,6 +102,7 @@ namespace GTarefasGUI
                 button4.Show();
                 dataGridViewTarefas.Hide();
                 button3.Hide();
+                button5.Hide();
             }
 
 

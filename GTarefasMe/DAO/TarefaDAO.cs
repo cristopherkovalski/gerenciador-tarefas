@@ -140,6 +140,30 @@ namespace GTarefasMe.DAO
                 }
             }
         }
+
+        public void ConcluirTarefa(int tarefaId)
+        {
+            using (MySqlConnection conexao = connectionFactory.CriarConexao())
+            {
+                try
+                {
+                    conexao.Open();
+
+                    string query = "UPDATE Tarefa SET Status = @Status WHERE Id = @TarefaId";
+                    MySqlCommand cmd = new MySqlCommand(query, conexao);
+
+                    cmd.Parameters.AddWithValue("@Status", "Concluida");
+                    cmd.Parameters.AddWithValue("@TarefaId", tarefaId);
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Erro ao concluir tarefa: {ex.Message}", ex);
+                }
+            }
+        }
+
         private void PreencherParametrosTarefa(MySqlCommand cmd, Tarefa tarefa)
         {
             cmd.Parameters.AddWithValue("@Nome", tarefa.Nome);

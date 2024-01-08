@@ -60,7 +60,6 @@ namespace GTarefasMe.Controller
         }
         public void AlterarTarefa()
         {
-            // Verificar se há pelo menos uma linha selecionada
             if (HomeTLForm.dataGridViewTarefas.SelectedRows.Count > 0)
             {
                 // Obter a tarefa da linha selecionada
@@ -110,8 +109,24 @@ namespace GTarefasMe.Controller
             catch (Exception ex)
             {
                 HomeTLForm.ApresentarMensagemErro($"Erro ao atualizar tarefa: {ex.Message}");
-                Console.WriteLine(ex.Message);
+                
             }
+        }
+
+        public void ConcluirTarefa()
+        {
+            try
+            {
+                TarefaViewModel tarefaSelecionadaAtual = (TarefaViewModel)HomeTLForm.dataGridViewTarefas.SelectedRows[0].DataBoundItem;
+                tarefaDAO.ConcluirTarefa(tarefaSelecionadaAtual.Id);
+                ListarTarefas();
+            }
+            catch (Exception ex)
+            {
+                HomeTLForm.ApresentarMensagemErro($"Erro ao concluir tarefa: {ex.Message}");
+                
+            }
+
         }
 
         private void LimparControles()
