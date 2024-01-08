@@ -36,6 +36,7 @@
             label2 = new Label();
             textBox1 = new TextBox();
             comboBox1 = new ComboBox();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -110,11 +111,21 @@
             comboBox1.Size = new Size(165, 23);
             comboBox1.TabIndex = 7;
             // 
+            // button4
+            // 
+            button4.Location = new Point(500, 357);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 8;
+            button4.Text = "Atualizar";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button4);
             Controls.Add(comboBox1);
             Controls.Add(textBox1);
             Controls.Add(label2);
@@ -140,5 +151,6 @@
         public Label label2;
         public TextBox textBox1;
         public ComboBox comboBox1;
+        private Button button4;
     }
 }

@@ -100,18 +100,46 @@ namespace GTarefasMe.DAO
         {
             using (MySqlConnection conexao = connectionFactory.CriarConexao())
             {
-                conexao.Open();
-                string query = "UPDATE Tarefa SET Descricao = @Descricao, ResponsavelId = @ResponsavelId WHERE Id = @TarefaId";
-                MySqlCommand cmd = new MySqlCommand(query, conexao);
+                try
+                {
+                    conexao.Open();
 
-                cmd.Parameters.AddWithValue("@Descricao", novaDescricao);
-                cmd.Parameters.AddWithValue("@ResponsavelId", novoResponsavelId);
-                cmd.Parameters.AddWithValue("@TarefaId", tarefaId);
+                    // Verificar se o novo responsável existe na tabela Usuario
+                    if (!UsuarioExiste(conexao, novoResponsavelId))
+                    {
+                        // Lógica para lidar com o responsável inexistente
+                        // Exemplo: throw new Exception("Responsável inexistente.");
+                        return;
+                    }
 
-                cmd.ExecuteNonQuery();
+                    using (MySqlTransaction transacao = conexao.BeginTransaction())
+                    {
+                        try
+                        {
+                            string query = "UPDATE Tarefa SET Descricao = @Descricao, ResponsavelId = @ResponsavelId WHERE Id = @TarefaId";
+                            MySqlCommand cmd = new MySqlCommand(query, conexao, transacao);
+
+                            cmd.Parameters.AddWithValue("@Descricao", novaDescricao);
+                            cmd.Parameters.AddWithValue("@ResponsavelId", novoResponsavelId);
+                            cmd.Parameters.AddWithValue("@TarefaId", tarefaId);
+
+                            cmd.ExecuteNonQuery();
+
+                            transacao.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            // Se ocorrer algum erro na transação, faça o rollback
+                            transacao.Rollback();
+                            throw new Exception($"Erro na transação: {ex.Message}");
+                        }
+                    }
+                } catch (Exception ex)
+                {
+                    throw new Exception($"Erro na transação: {ex.Message}");
+                }
             }
         }
-
         private void PreencherParametrosTarefa(MySqlCommand cmd, Tarefa tarefa)
         {
             cmd.Parameters.AddWithValue("@Nome", tarefa.Nome);
@@ -145,7 +173,15 @@ namespace GTarefasMe.DAO
                 DataFim = dataFim
             };
         }
+        private bool UsuarioExiste(MySqlConnection conexao, int userId)
+        {
+            string query = "SELECT COUNT(*) FROM Usuario WHERE Id = @UserId";
+            MySqlCommand cmd = new MySqlCommand(query, conexao);
+            cmd.Parameters.AddWithValue("@UserId", userId);
 
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count > 0;
+        }
         private Desenvolvedor ObterResponsavelPorId(int responsavelId)
         {
             UsuarioDAO usuarioDAO = new UsuarioDAO(connectionFactory);

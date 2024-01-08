@@ -34,7 +34,7 @@ namespace GTarefasGUI
             this.Controller = controller;
             button2.Click += (sender, e) => controller.ListarTarefas();
             button3.Click += (sender, e) => controller.AlterarTarefa();
-           
+            button4.Click += (sender, e) => controller.AtualizarTarefa();
         }
 
         private void ConfigurarManipulacaoLinhas()
@@ -69,12 +69,15 @@ namespace GTarefasGUI
                 e.Cancel = true;
         }
 
-      
-       
+
+        public void ApresentarMensagemErro(string message)
+        {
+            MessageBox.Show(message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         public void ApresentarMensagem(string message)
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message, "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void setVisible(bool visible)
@@ -85,6 +88,7 @@ namespace GTarefasGUI
                 label2.Hide();
                 comboBox1.Hide();
                 textBox1.Hide();
+                button4.Hide();
              
             }
             else{
@@ -92,6 +96,7 @@ namespace GTarefasGUI
                 label2.Show();
                 comboBox1.Show();
                 textBox1.Show();
+                button4.Show();
                 dataGridViewTarefas.Hide();
                 button3.Hide();
             }

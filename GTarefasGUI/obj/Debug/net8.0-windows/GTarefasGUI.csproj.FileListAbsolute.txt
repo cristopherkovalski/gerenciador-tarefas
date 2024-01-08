@@ -36,3 +36,4 @@ C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\bin\Debug\net8.0-windows\K4
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.csproj.AssemblyReference.cache
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.csproj.CopyComplete
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.HomeTechLeaderForm.resources
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.sourcelink.json

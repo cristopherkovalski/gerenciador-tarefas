@@ -72,55 +72,53 @@ namespace GTarefasMe.Controller
                 // Preencher o ComboBox com opções de responsáveis da DAO
                 List<Usuario> usuarios = usuarioDAO.Listar();
                 HomeTLForm.setVisible(true);
-                HomeTLForm.comboBox1.DisplayMember = "Nome"; // Exibe o nome do usuário no ComboBox
-                HomeTLForm.comboBox1.ValueMember = "Id"; // Valor associado a cada item (pode ser o Id ou outra propriedade)
+                HomeTLForm.comboBox1.DisplayMember = "Nome"; 
+                HomeTLForm.comboBox1.ValueMember = "Id"; 
                 HomeTLForm.comboBox1.DataSource = usuarios;
 
 
-                // Outras lógicas de edição conforme necessário
+          
             }
             else
             {
-                HomeTLForm.ApresentarMensagem("Nenhuma tarefa selecionada.");
+                HomeTLForm.ApresentarMensagemErro("Nenhuma tarefa selecionada.");
             }
         }
-        public void AtualizarTarefa(object sender, EventArgs e)
+        public void AtualizarTarefa()
         {
             try
             {
                 TarefaViewModel tarefaSelecionadaAtual = (TarefaViewModel)HomeTLForm.dataGridViewTarefas.SelectedRows[0].DataBoundItem;
-                // Verificar se há uma tarefa selecionada para atualização
+              
                 if (tarefaSelecionadaAtual != null)
                 {
-                    // Preparar os dados para atualização
+                 
                     string novaDescricao = HomeTLForm.textBox1.Text;
                     int novoResponsavelId = Convert.ToInt32(HomeTLForm.comboBox1.SelectedValue);
 
-                    // Atualizar a tarefa usando sua DAO
                     tarefaDAO.AtualizarTarefa(tarefaSelecionadaAtual.Id, novaDescricao, novoResponsavelId);
 
-                    // Limpar controles e atualizar a lista de tarefas
+                    HomeTLForm.ApresentarMensagem("Atualizado com sucesso!");
                     LimparControles();
                     ListarTarefas();
                 }
                 else
                 {
-                    HomeTLForm.ApresentarMensagem("Nenhuma tarefa selecionada para atualização.");
+                    HomeTLForm.ApresentarMensagemErro("Nenhuma tarefa selecionada para atualização.");
                 }
             }
             catch (Exception ex)
             {
-                HomeTLForm.ApresentarMensagem($"Erro ao atualizar tarefa: {ex.Message}");
+                HomeTLForm.ApresentarMensagemErro($"Erro ao atualizar tarefa: {ex.Message}");
                 Console.WriteLine(ex.Message);
             }
         }
 
         private void LimparControles()
         {
-            // Limpar os controles conforme necessário
             HomeTLForm.textBox1.Text = string.Empty;
             HomeTLForm.comboBox1.SelectedIndex = -1;
-            // Outros controles, se houver
+            
         }
 
     }
