@@ -25,7 +25,8 @@ namespace GTarefasGUI
             this.usuarioAutenticado = login;
             TechLeaderController controller = new TechLeaderController(this);
             ConfigurarManipulacaoLinhas();
-            SetController(controller);   
+            SetController(controller);
+            setDataGridActionsVisible(false);
 
         }
 
@@ -37,6 +38,7 @@ namespace GTarefasGUI
             button4.Click += (sender, e) => controller.AtualizarTarefa();
             button5.Click += (sender, e) => controller.ConcluirTarefa();
             button6.Click += (sender, e) => controller.NovaTarefa(this.usuarioAutenticado);
+            comboBox2.SelectedIndexChanged += (sender, e) => controller.AplicarFiltrosTechLeader();
         }
 
         private void ConfigurarManipulacaoLinhas()
@@ -49,9 +51,6 @@ namespace GTarefasGUI
                    
                     string situacao = dataGridViewTarefas.SelectedRows[0].Cells["Status"].Value.ToString();
 
-                  
-                    button3.Show();
-                    button5.Show();
                     
                     button3.Enabled = (situacao != "Concluida");
                     button5.Enabled = (situacao != "Concluida"); 
@@ -61,6 +60,8 @@ namespace GTarefasGUI
                     // Se não houver linhas selecionadas, ocultar os botões
                    button3.Hide();
                    button5.Hide();
+                   comboBox2.Hide();
+                   label3.Hide();
                 }
 
             };
@@ -72,7 +73,25 @@ namespace GTarefasGUI
                 // Tornar a célula somente leitura
                 e.Cancel = true;
         }
+        
+        public void setDataGridActionsVisible(bool visible)
+        {
+            if (visible)
+            {
+                comboBox2.Show();
+                button3.Show();
+                button5.Show();
+                label3.Show();
+            }
+            else
+            {
+                comboBox2.Hide();
+                button3.Hide();
+                button5.Hide();
+                label3.Hide();
 
+            }
+        }
 
         public void ApresentarMensagemErro(string message)
         {
@@ -104,6 +123,8 @@ namespace GTarefasGUI
                 dataGridViewTarefas.Hide();
                 button3.Hide();
                 button5.Hide();
+                comboBox2.Hide();
+                label3.Hide();
             }
 
 

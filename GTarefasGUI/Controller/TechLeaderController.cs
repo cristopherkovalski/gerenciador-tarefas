@@ -37,6 +37,7 @@ namespace GTarefasMe.Controller
         private void InitController()
         {
             this.HomeTLForm.SetController(this);
+            this.ConfigurarComboBox();
            
         }
 
@@ -52,6 +53,7 @@ namespace GTarefasMe.Controller
             HomeTLForm.dataGridViewTarefas.Columns["ResponsavelId"].Visible = false;
             HomeTLForm.dataGridViewTarefas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             HomeTLForm.dataGridViewTarefas.CellBeginEdit += HomeTLForm.dataGridViewTarefas_CellBeginEdit;
+            HomeTLForm.setDataGridActionsVisible(true);
             }
             catch (Exception ex)
             {
@@ -130,7 +132,72 @@ namespace GTarefasMe.Controller
 
         }
 
-      
+        public void FiltrarTarefasTechLeader(string situacao)
+        {
+            try
+            {
+                List<Tarefa> listaTarefasFiltrada = new List<Tarefa>();
+
+                
+                switch (situacao.ToLower())
+                {
+                    case "em andamento":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("Em Andamento", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    case "concluida":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("Concluida", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    case "abandonada":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("Abandonada", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    case "com impedimento":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("Com Impedimento", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    case "em analise":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("Em Analise", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    case "a ser aprovada":
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas().Where(t => t.Status.Equals("A Ser Aprovada", StringComparison.OrdinalIgnoreCase)).ToList();
+                        break;
+                    default:
+                        listaTarefasFiltrada = tarefaDAO.ListarTodasTarefas();
+                        break;
+                }
+
+                List<TarefaViewModel> listaTarefasViewModel = listaTarefasFiltrada.Select(t => new TarefaViewModel(t)).ToList();
+                HomeTLForm.dataGridViewTarefas.DataSource = listaTarefasViewModel;
+                HomeTLForm.setDataGridActionsVisible(true);
+            }
+            catch (Exception ex)
+            {
+                HomeTLForm.ApresentarMensagemErro($"Erro ao filtrar tarefas: {ex.Message}");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void ConfigurarComboBox()
+        {
+            List<string> opcoesSituacao = new List<string>
+            {
+                "Em Andamento",
+                "Concluida",
+                "Abandonada",
+                "Com Impedimento",
+                "Em Analise",
+                "A Ser Aprovada"
+            };
+
+            HomeTLForm.comboBox2.DataSource = opcoesSituacao;
+        }
+
+
+        public void AplicarFiltrosTechLeader()
+        {
+            string situacao = HomeTLForm.comboBox2.Text;
+            FiltrarTarefasTechLeader(situacao);
+        }
+
+
 
         public void NovaTarefa(Login usuarioAutenticado)
         {

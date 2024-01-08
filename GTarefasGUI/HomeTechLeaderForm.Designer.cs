@@ -39,6 +39,8 @@
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
+            comboBox2 = new ComboBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -140,11 +142,30 @@
             button6.Text = "Nova Tarefa";
             button6.UseVisualStyleBackColor = true;
             // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(458, 196);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(165, 23);
+            comboBox2.TabIndex = 11;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(346, 199);
+            label3.Name = "label3";
+            label3.Size = new Size(109, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Filtrar Por Situação:";
+            // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(comboBox2);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -176,5 +197,7 @@
         private Button button4;
         private Button button5;
         private Button button6;
+        public ComboBox comboBox2;
+        private Label label3;
     }
 }
