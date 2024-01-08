@@ -37,3 +37,4 @@ C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GT
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.csproj.CopyComplete
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.HomeTechLeaderForm.resources
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.sourcelink.json
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasGUI\obj\Debug\net8.0-windows\GTarefasGUI.InserirTarefaForm.resources

@@ -38,6 +38,7 @@
             comboBox1 = new ComboBox();
             button4 = new Button();
             button5 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -130,11 +131,21 @@
             button5.Text = "Concluir";
             button5.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            button6.Location = new Point(345, 133);
+            button6.Name = "button6";
+            button6.Size = new Size(94, 41);
+            button6.TabIndex = 10;
+            button6.Text = "Nova Tarefa";
+            button6.UseVisualStyleBackColor = true;
+            // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(comboBox1);
@@ -164,5 +175,6 @@
         public ComboBox comboBox1;
         private Button button4;
         private Button button5;
+        private Button button6;
     }
 }

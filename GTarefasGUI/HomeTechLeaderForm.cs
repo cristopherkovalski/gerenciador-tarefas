@@ -36,6 +36,7 @@ namespace GTarefasGUI
             button3.Click += (sender, e) => controller.AlterarTarefa();
             button4.Click += (sender, e) => controller.AtualizarTarefa();
             button5.Click += (sender, e) => controller.ConcluirTarefa();
+            button6.Click += (sender, e) => controller.NovaTarefa(this.usuarioAutenticado);
         }
 
         private void ConfigurarManipulacaoLinhas()
@@ -109,7 +110,7 @@ namespace GTarefasGUI
 
         }
 
-        public void PreencherComboBoxResponsaveis(List<Usuario> responsaveis, Usuario responsavelSelecionado)
+      /*  public void PreencherComboBoxResponsaveis(List<Usuario> responsaveis, Usuario responsavelSelecionado)
         {
         
             comboBox1.Items.Clear();
@@ -122,7 +123,7 @@ namespace GTarefasGUI
             {
                 comboBox1.SelectedItem = responsavelSelecionado;
             }
-        }
+        }**/
 
 
 

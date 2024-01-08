@@ -19,7 +19,8 @@ namespace GTarefasMe.Controller
         private LoginDAO loginDAO;
         private ConnectionFactory conn;
         HomeTechLeaderForm HomeTLForm;
-       
+        private InserirTarefaForm inserirTarefaForm;
+
 
         public TechLeaderController(HomeTechLeaderForm homeTLForm)
         {
@@ -95,7 +96,7 @@ namespace GTarefasMe.Controller
                     string novaDescricao = HomeTLForm.textBox1.Text;
                     int novoResponsavelId = Convert.ToInt32(HomeTLForm.comboBox1.SelectedValue);
 
-                    tarefaDAO.AtualizarTarefa(tarefaSelecionadaAtual.Id, novaDescricao, novoResponsavelId);
+                    tarefaDAO.AtualizarTarefa((int)tarefaSelecionadaAtual.Id, novaDescricao, novoResponsavelId);
 
                     HomeTLForm.ApresentarMensagem("Atualizado com sucesso!");
                     LimparControles();
@@ -118,7 +119,7 @@ namespace GTarefasMe.Controller
             try
             {
                 TarefaViewModel tarefaSelecionadaAtual = (TarefaViewModel)HomeTLForm.dataGridViewTarefas.SelectedRows[0].DataBoundItem;
-                tarefaDAO.ConcluirTarefa(tarefaSelecionadaAtual.Id);
+                tarefaDAO.ConcluirTarefa((int)tarefaSelecionadaAtual.Id);
                 ListarTarefas();
             }
             catch (Exception ex)
@@ -128,6 +129,26 @@ namespace GTarefasMe.Controller
             }
 
         }
+
+      
+
+        public void NovaTarefa(Login usuarioAutenticado)
+        {
+          
+            if (inserirTarefaForm == null || inserirTarefaForm.IsDisposed)
+            {
+                inserirTarefaForm = new InserirTarefaForm(usuarioAutenticado, this);
+                inserirTarefaForm.Show();
+            }
+            else
+            {
+                
+                inserirTarefaForm.BringToFront();
+            }
+
+            this.HomeTLForm.Hide();
+        }
+    
 
         private void LimparControles()
         {
