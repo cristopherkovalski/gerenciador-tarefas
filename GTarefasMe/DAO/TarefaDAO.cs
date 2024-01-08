@@ -96,7 +96,7 @@ namespace GTarefasMe.DAO
             }
         }
 
-        public void AtualizarTarefa(int tarefaId, string novaDescricao, int novoResponsavelId)
+        public void AtualizarTarefa(int tarefaId, string novaDescricao, int novoResponsavelId, string situacao)
         {
             using (MySqlConnection conexao = connectionFactory.CriarConexao())
             {
@@ -116,11 +116,12 @@ namespace GTarefasMe.DAO
                     {
                         try
                         {
-                            string query = "UPDATE Tarefa SET Descricao = @Descricao, ResponsavelId = @ResponsavelId WHERE Id = @TarefaId";
+                            string query = "UPDATE Tarefa SET Descricao = @Descricao, ResponsavelId = @ResponsavelId, Status = @Status WHERE Id = @TarefaId";
                             MySqlCommand cmd = new MySqlCommand(query, conexao, transacao);
 
                             cmd.Parameters.AddWithValue("@Descricao", novaDescricao);
                             cmd.Parameters.AddWithValue("@ResponsavelId", novoResponsavelId);
+                            cmd.Parameters.AddWithValue("@Status", situacao);
                             cmd.Parameters.AddWithValue("@TarefaId", tarefaId);
 
                             cmd.ExecuteNonQuery();

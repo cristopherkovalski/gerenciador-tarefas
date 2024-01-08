@@ -39,6 +39,13 @@
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
+            comboBox2 = new ComboBox();
+            label3 = new Label();
+            comboBox3 = new ComboBox();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -115,7 +122,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(500, 357);
+            button4.Location = new Point(498, 373);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
             button4.TabIndex = 8;
@@ -140,11 +147,81 @@
             button6.Text = "Nova Tarefa";
             button6.UseVisualStyleBackColor = true;
             // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(458, 196);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(165, 23);
+            comboBox2.TabIndex = 11;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(346, 199);
+            label3.Name = "label3";
+            label3.Size = new Size(109, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Filtrar Por Situação:";
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(458, 329);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(167, 23);
+            comboBox3.TabIndex = 13;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(498, 311);
+            label4.Name = "label4";
+            label4.Size = new Size(90, 15);
+            label4.TabIndex = 14;
+            label4.Text = "Alterar Situação";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 16F);
+            label5.Location = new Point(355, 29);
+            label5.Name = "label5";
+            label5.Size = new Size(73, 30);
+            label5.TabIndex = 15;
+            label5.Text = "Home";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(668, 41);
+            label6.Name = "label6";
+            label6.Size = new Size(69, 15);
+            label6.TabIndex = 16;
+            label6.Text = "Bem-vindo!";
+            label6.Click += label6_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(638, 66);
+            label7.Name = "label7";
+            label7.Size = new Size(44, 15);
+            label7.TabIndex = 17;
+            label7.Text = "default";
+            // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(comboBox3);
+            Controls.Add(label3);
+            Controls.Add(comboBox2);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -176,5 +253,12 @@
         private Button button4;
         private Button button5;
         private Button button6;
+        public ComboBox comboBox2;
+        private Label label3;
+        public ComboBox comboBox3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
     }
 }

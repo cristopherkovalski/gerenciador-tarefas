@@ -8,7 +8,7 @@ namespace GTarefasMe.Model
 {
     public abstract class Usuario
     {
-        public int Id { get; private set; }
+        public int? Id { get; private set; }
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }
         public Endereco Endereco { get; private set; }
@@ -19,7 +19,7 @@ namespace GTarefasMe.Model
         {
 
         }
-        public Usuario(int id, string nome, string sobrenome, Endereco endereco, TipoUsuario tipoUsuario, string cpf)
+        public Usuario(int? id, string nome, string sobrenome, Endereco endereco, TipoUsuario tipoUsuario, string cpf)
         {
             Id = id;
             Nome = nome;

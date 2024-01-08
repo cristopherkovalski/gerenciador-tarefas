@@ -13,7 +13,7 @@ namespace GTarefasGUI.ViewModel
         public string NomeTarefa { get; set; }
         public string Descricao { get; set; }
         public string? ResponsavelNome { get; set; }
-        public int ResponsavelId {  get; set; }
+        public int? ResponsavelId {  get; set; }
         public string Status { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
