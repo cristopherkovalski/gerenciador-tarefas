@@ -19,7 +19,7 @@ namespace GTarefasGUI
         private CadastroUsuarioController Controller;
         public Login UsuarioLogado;
         public CadastroForm(Login login)
-        {   
+        {
             UsuarioLogado = login;
             InitializeComponent();
             CadastroUsuarioController controller = new CadastroUsuarioController(this);
@@ -46,6 +46,11 @@ namespace GTarefasGUI
         public void ApresentarMensagem(string message)
         {
             MessageBox.Show(message, "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Controller.VoltarTela();
         }
     }
 }

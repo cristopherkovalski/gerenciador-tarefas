@@ -232,6 +232,7 @@
             button2.TabIndex = 23;
             button2.Text = "Voltar";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label12
             // 
