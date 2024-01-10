@@ -15,7 +15,7 @@ namespace GTarefasGUI.Controller
         private LoginDAO loginDAO;
         private TarefaDAO tarefaDAO;
         private ConnectionFactory conn;
-        private HomeTechLeaderForm homeTechLeaderForm; 
+        private HomeForm homeTechLeaderForm; 
         private CadastroForm cadastroForm;
 
         public CadastroUsuarioController(CadastroForm cadastrarForm)
@@ -84,7 +84,7 @@ namespace GTarefasGUI.Controller
             {
                 if (homeTechLeaderForm == null || homeTechLeaderForm.IsDisposed)
                 {
-                    homeTechLeaderForm = new HomeTechLeaderForm(cadastroForm.UsuarioLogado);
+                    homeTechLeaderForm = new HomeForm(cadastroForm.UsuarioLogado);
                     homeTechLeaderForm.Show();
                     cadastroForm.Hide();
                     cadastroForm.Close();

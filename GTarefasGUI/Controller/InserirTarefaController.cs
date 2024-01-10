@@ -14,7 +14,7 @@ namespace GTarefasGUI.Controller
         private TarefaDAO tarefaDAO;
         private ConnectionFactory conn;
         private InserirTarefaForm InserirTarefaForm;
-        private HomeTechLeaderForm HomeTechLeaderForm;
+        private HomeForm HomeTechLeaderForm;
         public List<Usuario> usuarios = new List<Usuario>();
 
         public InserirTarefaController(InserirTarefaForm inserirTForm)
@@ -73,7 +73,7 @@ namespace GTarefasGUI.Controller
         {
             if (HomeTechLeaderForm == null || HomeTechLeaderForm.IsDisposed)
             {
-                HomeTechLeaderForm = new HomeTechLeaderForm(InserirTarefaForm.usuarioAutenticado);
+                HomeTechLeaderForm = new HomeForm(InserirTarefaForm.usuarioAutenticado);
                 InserirTarefaForm.Hide();
                 HomeTechLeaderForm.Show();
                 InserirTarefaForm.Close();

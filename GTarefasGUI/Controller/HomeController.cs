@@ -12,18 +12,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GTarefasMe.Controller
 {
-    public class TechLeaderController
+    public class HomeController
     {
         private UsuarioDAO usuarioDAO;
         private TarefaDAO tarefaDAO;
         private LoginDAO loginDAO;
         private ConnectionFactory conn;
-        HomeTechLeaderForm HomeTLForm;
+        HomeForm HomeTLForm;
         private InserirTarefaForm inserirTarefaForm;
         private CadastroForm cadastroForm;
 
 
-        public TechLeaderController(HomeTechLeaderForm homeTLForm)
+        public HomeController(HomeForm homeTLForm)
         {
             this.conn = new ConnectionFactory();
             this.loginDAO = new LoginDAO(conn);
@@ -283,7 +283,7 @@ namespace GTarefasMe.Controller
         public void Logout()
         {
             this.HomeTLForm.Close();
-            Form2 form2 = new Form2();
+            LoginForm form2 = new LoginForm();
             form2.Show();
         }
 

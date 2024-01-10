@@ -16,23 +16,23 @@ using GTarefasMe.Model;
 
 namespace GTarefasGUI
 {
-    public partial class HomeTechLeaderForm : Form
+    public partial class HomeForm : Form
     {
         public Login usuarioAutenticado;
-        private TechLeaderController Controller;
+        private HomeController Controller;
 
-        public HomeTechLeaderForm(Login login)
+        public HomeForm(Login login)
         {
             InitializeComponent();
             this.usuarioAutenticado = login;
             label7.Text = this.usuarioAutenticado.Email;
-            TechLeaderController controller = new TechLeaderController(this);
+            HomeController controller = new HomeController(this);
             ConfigurarManipulacaoLinhas();
             SetController(controller);
             setDataGridActionsVisible(false);
         }
 
-        public void SetController(TechLeaderController controller)
+        public void SetController(HomeController controller)
         {
             this.Controller = controller;
 
@@ -43,7 +43,7 @@ namespace GTarefasGUI
             ConfiguraBotaoFiltro(controller);
             ConfigurarBotaoCadastro(controller);
         }
-        public void ConfiguraBotaoFiltro(TechLeaderController controller)
+        public void ConfiguraBotaoFiltro(HomeController controller)
         {
             if (usuarioAutenticado.TipoUsuario.Equals(TipoUsuario.TechLeader))
             {
@@ -56,7 +56,7 @@ namespace GTarefasGUI
             }
         }
 
-        public void ConfigurarBotaoCadastro(TechLeaderController controller)
+        public void ConfigurarBotaoCadastro(HomeController controller)
         {
             if (usuarioAutenticado.TipoUsuario.Equals(TipoUsuario.TechLeader))
             {

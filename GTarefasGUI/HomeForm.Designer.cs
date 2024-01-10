@@ -1,6 +1,6 @@
 ﻿namespace GTarefasGUI
 {
-    partial class HomeTechLeaderForm
+    partial class HomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -206,7 +206,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(663, 54);
+            label7.Location = new Point(686, 54);
             label7.Name = "label7";
             label7.Size = new Size(44, 15);
             label7.TabIndex = 17;
@@ -223,7 +223,7 @@
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
-            // HomeTechLeaderForm
+            // HomeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -247,7 +247,7 @@
             Controls.Add(dataGridViewTarefas);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "HomeTechLeaderForm";
+            Name = "HomeForm";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).EndInit();
             ResumeLayout(false);

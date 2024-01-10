@@ -15,10 +15,10 @@ using GTarefasMe.Model;
 
 namespace GTarefasGUI
 {
-    public partial class Form2 : Form
+    public partial class LoginForm : Form
     {   
         private LoginController loginController;
-        public Form2()
+        public LoginForm()
         {
             InitializeComponent();
             this.loginController = new LoginController();
@@ -43,7 +43,7 @@ namespace GTarefasGUI
             {
                 MessageBox.Show("Login bem-sucedido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
-                HomeTechLeaderForm formPrincipal = new HomeTechLeaderForm(usuarioAutenticado);
+                HomeForm formPrincipal = new HomeForm(usuarioAutenticado);
                 formPrincipal.Show();
 
                 // Oculte o formulário de login (opcional)

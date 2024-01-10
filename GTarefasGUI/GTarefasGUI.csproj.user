@@ -7,10 +7,10 @@
     <Compile Update="InserirTarefaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="HomeTechLeaderForm.cs">
+    <Compile Update="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form2.cs">
+    <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

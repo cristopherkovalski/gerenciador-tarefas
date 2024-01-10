@@ -19,10 +19,10 @@ namespace GTarefasGUI
     {
         public Login usuarioAutenticado;
         public InserirTarefaController Controller;
-        private TechLeaderController techLeaderController;
+        private HomeController techLeaderController;
 
 
-        public InserirTarefaForm(Login login, TechLeaderController techLeaderController)
+        public InserirTarefaForm(Login login, HomeController techLeaderController)
         {
             InitializeComponent();
             this.Controller = new InserirTarefaController(this);
