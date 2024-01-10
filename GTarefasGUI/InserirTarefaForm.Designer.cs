@@ -36,17 +36,19 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             label4 = new Label();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(344, 364);
+            button1.BackColor = Color.FromArgb(192, 255, 192);
+            button1.Location = new Point(344, 334);
             button1.Name = "button1";
             button1.Size = new Size(103, 24);
             button1.TabIndex = 0;
             button1.Text = "Inserir Tarefa";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += this.button1_Click_1;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // label1
             // 
@@ -109,11 +111,24 @@
             label4.TabIndex = 8;
             label4.Text = "Inserir Nova Tarefa";
             // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(255, 192, 192);
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(358, 377);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 9;
+            button2.Text = "Voltar";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // InserirTarefaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button2);
             Controls.Add(label4);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -134,9 +149,10 @@
         private Label label1;
         private Label label2;
         public ComboBox comboBox1;
-        private Label label3;
+        public Label label3;
         public TextBox textBox1;
         public TextBox textBox2;
         private Label label4;
+        private Button button2;
     }
 }

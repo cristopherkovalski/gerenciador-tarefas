@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GTarefasGUI.ViewModel;
 using GTarefasMe;
 using GTarefasMe.Controller;
+using GTarefasMe.DAO;
 using GTarefasMe.Model;
 
 
@@ -16,7 +18,7 @@ namespace GTarefasGUI
 {
     public partial class HomeTechLeaderForm : Form
     {
-        private Login usuarioAutenticado;
+        public Login usuarioAutenticado;
         private TechLeaderController Controller;
 
         public HomeTechLeaderForm(Login login)
@@ -28,19 +30,97 @@ namespace GTarefasGUI
             ConfigurarManipulacaoLinhas();
             SetController(controller);
             setDataGridActionsVisible(false);
-
         }
 
         public void SetController(TechLeaderController controller)
         {
             this.Controller = controller;
-            button1.Click += (sender, e) => controller.CadastroUsuario(this.usuarioAutenticado);
+
             button2.Click += (sender, e) => controller.ListarTarefas();
             button3.Click += (sender, e) => controller.AlterarTarefa();
-            button4.Click += (sender, e) => controller.AtualizarTarefa();
             button5.Click += (sender, e) => controller.ConcluirTarefa();
             button6.Click += (sender, e) => controller.NovaTarefa(this.usuarioAutenticado);
-            comboBox2.SelectedIndexChanged += (sender, e) => controller.AplicarFiltrosTechLeader();
+            ConfiguraBotaoFiltro(controller);
+            ConfigurarBotaoCadastro(controller);
+        }
+        public void ConfiguraBotaoFiltro(TechLeaderController controller)
+        {
+            if (usuarioAutenticado.TipoUsuario.Equals(TipoUsuario.TechLeader))
+            {
+
+                comboBox2.SelectedIndexChanged += (sender, e) => controller.AplicarFiltrosTechLeader();
+            }
+            else
+            {
+                comboBox2.SelectedIndexChanged += (sender, e) => controller.AplicarFiltrosDev();
+            }
+        }
+
+        public void ConfigurarBotaoCadastro(TechLeaderController controller)
+        {
+            if (usuarioAutenticado.TipoUsuario.Equals(TipoUsuario.TechLeader))
+            {
+                button1.Click += (sender, e) => controller.CadastroUsuario(this.usuarioAutenticado);
+                button1.Show();
+            }
+            else
+            {
+                button1.Hide();
+            }
+
+        }
+
+        public void mostrarListaTarefa(List<Tarefa> listaTarefas)
+        {
+            setAlterarTarefaMenuVisible(false);
+            dataGridViewTarefas.Show();
+            List<TarefaViewModel> listaTarefasViewModel = listaTarefas.Select(t => new TarefaViewModel(t)).ToList();
+            dataGridViewTarefas.DataSource = listaTarefasViewModel;
+            dataGridViewTarefas.Columns["ResponsavelId"].Visible = false;
+            dataGridViewTarefas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTarefas.CellBeginEdit += dataGridViewTarefas_CellBeginEdit;
+            setDataGridActionsVisible(true);
+
+        }
+        public void mostrarAlterarMenu()
+        {
+            setDataGridActionsVisible(false);
+            Controller.ConfigurarComboBoxAlt();
+            if (dataGridViewTarefas.SelectedRows.Count > 0)
+            {
+                TarefaViewModel tarefaSelecionada = (TarefaViewModel)dataGridViewTarefas.SelectedRows[0].DataBoundItem;
+                textBox1.Text = tarefaSelecionada.Descricao;
+                setAlterarTarefaMenuVisible(true);
+            }
+            else
+            {
+                ApresentarMensagemErro("Nenhuma tarefa selecionada.");
+            }
+        }
+
+        public AlteraTarefaViewModel getAlterarForm()
+        {
+            TarefaViewModel tarefaSelecionadaAtual = (TarefaViewModel)dataGridViewTarefas.SelectedRows[0].DataBoundItem;
+
+            if (tarefaSelecionadaAtual != null && usuarioAutenticado.TipoUsuario.Equals(TipoUsuario.TechLeader))
+            {
+
+                string novaDescricao = textBox1.Text;
+                int novoResponsavelId = Convert.ToInt32(comboBoxResponsavel.SelectedValue);
+                string situacao = comboBoxAltSituacao.Text;
+                return new AlteraTarefaViewModel(tarefaSelecionadaAtual.Id, novoResponsavelId, novaDescricao, situacao);
+            }
+            else if (tarefaSelecionadaAtual != null)
+            {
+                string novaDescricao = textBox1.Text;
+                int novoResponsavelId = usuarioAutenticado.UserId;
+                string situacao = comboBoxAltSituacao.Text;
+                return new AlteraTarefaViewModel(tarefaSelecionadaAtual.Id, novoResponsavelId, novaDescricao, situacao);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private void ConfigurarManipulacaoLinhas()
@@ -50,25 +130,16 @@ namespace GTarefasGUI
             {
                 if (dataGridViewTarefas.SelectedRows.Count > 0)
                 {
-
                     string situacao = dataGridViewTarefas.SelectedRows[0].Cells["Status"].Value.ToString();
-
-
                     button3.Enabled = (situacao != "Concluida");
                     button5.Enabled = (situacao != "Concluida");
                 }
                 else
                 {
-                    // Se não houver linhas selecionadas, ocultar os botões
-                    button3.Hide();
-                    button5.Hide();
-                    comboBox2.Hide();
-                    label3.Hide();
+                    setDataGridActionsVisible(false);
                 }
 
             };
-
-
         }
         public void dataGridViewTarefas_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -94,7 +165,14 @@ namespace GTarefasGUI
 
             }
         }
-
+        public void CarregarComboBoxUsuario(List<Usuario> usuarios)
+        {
+            labelResponsavel.Show();
+            comboBoxResponsavel.Show();
+            comboBoxResponsavel.DisplayMember = "Nome";
+            comboBoxResponsavel.ValueMember = "Id";
+            comboBoxResponsavel.DataSource = usuarios;
+        }
         public void ApresentarMensagemErro(string message)
         {
             MessageBox.Show(message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,14 +183,14 @@ namespace GTarefasGUI
             MessageBox.Show(message, "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public void setVisible(bool visible)
+        public void setAlterarTarefaMenuVisible(bool visible)
         {
             if (!visible)
             {
-                label1.Hide();
+                labelResponsavel.Hide();
                 label2.Hide();
-                comboBox1.Hide();
-                comboBox3.Hide();
+                comboBoxResponsavel.Hide();
+                comboBoxAltSituacao.Hide();
                 textBox1.Hide();
                 label4.Hide();
                 button4.Hide();
@@ -120,10 +198,8 @@ namespace GTarefasGUI
             }
             else
             {
-                label1.Show();
                 label2.Show();
-                comboBox1.Show();
-                comboBox3.Show();
+                comboBoxAltSituacao.Show();
                 textBox1.Show();
                 button4.Show();
                 dataGridViewTarefas.Hide();
@@ -132,9 +208,12 @@ namespace GTarefasGUI
                 comboBox2.Hide();
                 label3.Hide();
             }
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
 
-
+            this.Controller.AtualizarTarefa();
         }
 
         /*  public void PreencherComboBoxResponsaveis(List<Usuario> responsaveis, Usuario responsavelSelecionado)
@@ -152,9 +231,6 @@ namespace GTarefasGUI
               }
           }**/
 
-
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -163,6 +239,12 @@ namespace GTarefasGUI
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            this.Controller.Logout();
         }
     }
 

@@ -213,7 +213,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.PaleGreen;
+            button1.BackColor = Color.FromArgb(192, 255, 192);
             button1.Location = new Point(216, 368);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);

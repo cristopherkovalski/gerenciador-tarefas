@@ -32,20 +32,21 @@
             button2 = new Button();
             dataGridViewTarefas = new DataGridView();
             button3 = new Button();
-            label1 = new Label();
+            labelResponsavel = new Label();
             label2 = new Label();
             textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            comboBoxResponsavel = new ComboBox();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
             comboBox2 = new ComboBox();
             label3 = new Label();
-            comboBox3 = new ComboBox();
+            comboBoxAltSituacao = new ComboBox();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTarefas).BeginInit();
             SuspendLayout();
             // 
@@ -86,14 +87,14 @@
             button3.Text = "Alterar ";
             button3.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelResponsavel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(458, 248);
-            label1.Name = "label1";
-            label1.Size = new Size(165, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Selecione o novo Responsável";
+            labelResponsavel.AutoSize = true;
+            labelResponsavel.Location = new Point(458, 248);
+            labelResponsavel.Name = "labelResponsavel";
+            labelResponsavel.Size = new Size(165, 15);
+            labelResponsavel.TabIndex = 4;
+            labelResponsavel.Text = "Selecione o novo Responsável";
             // 
             // label2
             // 
@@ -112,13 +113,13 @@
             textBox1.Size = new Size(175, 103);
             textBox1.TabIndex = 6;
             // 
-            // comboBox1
+            // comboBoxResponsavel
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(458, 277);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(165, 23);
-            comboBox1.TabIndex = 7;
+            comboBoxResponsavel.FormattingEnabled = true;
+            comboBoxResponsavel.Location = new Point(458, 277);
+            comboBoxResponsavel.Name = "comboBoxResponsavel";
+            comboBoxResponsavel.Size = new Size(165, 23);
+            comboBoxResponsavel.TabIndex = 7;
             // 
             // button4
             // 
@@ -128,6 +129,7 @@
             button4.TabIndex = 8;
             button4.Text = "Atualizar";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -164,13 +166,13 @@
             label3.TabIndex = 12;
             label3.Text = "Filtrar Por Situação:";
             // 
-            // comboBox3
+            // comboBoxAltSituacao
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(458, 329);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(167, 23);
-            comboBox3.TabIndex = 13;
+            comboBoxAltSituacao.FormattingEnabled = true;
+            comboBoxAltSituacao.Location = new Point(458, 329);
+            comboBoxAltSituacao.Name = "comboBoxAltSituacao";
+            comboBoxAltSituacao.Size = new Size(167, 23);
+            comboBoxAltSituacao.TabIndex = 13;
             // 
             // label4
             // 
@@ -194,7 +196,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(668, 41);
+            label6.Location = new Point(696, 29);
             label6.Name = "label6";
             label6.Size = new Size(69, 15);
             label6.TabIndex = 16;
@@ -204,31 +206,43 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(638, 66);
+            label7.Location = new Point(663, 54);
             label7.Name = "label7";
             label7.Size = new Size(44, 15);
             label7.TabIndex = 17;
             label7.Text = "default";
+            // 
+            // button7
+            // 
+            button7.BackColor = Color.FromArgb(255, 192, 192);
+            button7.Location = new Point(696, 72);
+            button7.Name = "button7";
+            button7.Size = new Size(69, 23);
+            button7.TabIndex = 18;
+            button7.Text = "Logout";
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // HomeTechLeaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button7);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(comboBox3);
+            Controls.Add(comboBoxAltSituacao);
             Controls.Add(label3);
             Controls.Add(comboBox2);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxResponsavel);
             Controls.Add(textBox1);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(labelResponsavel);
             Controls.Add(button3);
             Controls.Add(dataGridViewTarefas);
             Controls.Add(button2);
@@ -246,19 +260,20 @@
         private Button button2;
         public DataGridView dataGridViewTarefas;
         private Button button3;
-        public Label label1;
+        public Label labelResponsavel;
         public Label label2;
         public TextBox textBox1;
-        public ComboBox comboBox1;
+        public ComboBox comboBoxResponsavel;
         private Button button4;
         private Button button5;
         private Button button6;
         public ComboBox comboBox2;
         private Label label3;
-        public ComboBox comboBox3;
+        public ComboBox comboBoxAltSituacao;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
+        private Button button7;
     }
 }

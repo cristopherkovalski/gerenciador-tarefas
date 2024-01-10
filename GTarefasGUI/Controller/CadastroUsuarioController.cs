@@ -36,82 +36,39 @@ namespace GTarefasGUI.Controller
 
         }
 
-        static string GerarSenhaAleatoria(int comprimento)
-        {
-           
-            const string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random random = new Random();
-            char[] senha = new char[comprimento];
-            for (int i = 0; i < comprimento; i++)
-            {
-                senha[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
-            }
-
-            return new string(senha);
-        }
+       
     
 
-    public void InserirUsuario()
+        public void InserirUsuario()
         {
             try
             {
-                   if (string.IsNullOrWhiteSpace(cadastroForm.textBoxNome.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxSobrenome.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxLogradouro.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxNumero.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxCidade.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxEstado.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxCEP.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxTime.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxCPF.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.textBoxEmail.Text) ||
-                    string.IsNullOrWhiteSpace(cadastroForm.comboBoxTipo.Text))
-                   {
-                            // Se algum campo obrigatório estiver em branco, exibe uma mensagem de erro
-                            cadastroForm.ApresentarMensagemErro("Por favor, preencha todos os campos obrigatórios.");
-                            return;
-                   }
-                string Nome = cadastroForm.textBoxNome.Text;
-                string Sobrenome = cadastroForm.textBoxSobrenome.Text;
-                string Logradouro = cadastroForm.textBoxLogradouro.Text;
-                string Numero = cadastroForm.textBoxNumero.Text;
-                string Cidade = cadastroForm.textBoxCidade.Text;
-                string Estado = cadastroForm.textBoxEstado.Text;
-                string CEP = cadastroForm.textBoxCEP.Text;
-                string Time = cadastroForm.textBoxTime.Text;
-                string CPF = cadastroForm.textBoxCPF.Text;
-                Endereco Endereco = new Endereco(null, Logradouro, Cidade, Estado, CEP);
-                string email = cadastroForm.textBoxEmail.Text;
-                string senha = GerarSenhaAleatoria(8);
-                string tipoUsuario = cadastroForm.comboBoxTipo.Text;
-
-                if (tipoUsuario == "Desenvolvedor")
+                Usuario usuario = this.cadastroForm.GetUsuarioForm();
+                if (usuario.TipoUsuario == TipoUsuario.Desenvolvedor)
                 {
-                    Desenvolvedor usuario = new Desenvolvedor(null, Nome, Sobrenome, Endereco, TipoUsuario.Desenvolvedor, CPF, Time, "Ativo", DateTime.Now, null);
-                    int userid = usuarioDAO.InserirDesenvolvedor(usuario);
-                    Login autenticacao = new Login(null, senha, email, TipoUsuario.Desenvolvedor, userid);
+                    int userid = usuarioDAO.InserirDesenvolvedor((Desenvolvedor)usuario);
+                    Login autenticacao = this.cadastroForm.GetLoginForm(userid);
                     loginDAO.InserirLogin(autenticacao);
                     cadastroForm.ApresentarMensagem("Sucesso na inserção do Desenvolvedor");
                     VoltarTela();
-
                 }
-                else if(tipoUsuario == "TechLeader")
+                else
                 {
-                    TechLeader usuario = new TechLeader(null, Nome, Sobrenome, Endereco, TipoUsuario.TechLeader, CPF, Time, "Ativo", DateTime.Now, null);
-                    int userid = usuarioDAO.InserirDesenvolvedor(usuario);
-                    Login autenticacao = new Login(null, senha, email, TipoUsuario.TechLeader, userid);
+                    int userid = usuarioDAO.InserirDesenvolvedor((TechLeader)usuario);
+                    Login autenticacao = this.cadastroForm.GetLoginForm(userid);
                     loginDAO.InserirLogin(autenticacao);
-                    cadastroForm.ApresentarMensagem("Sucesso na inserção do Tech Leader");
+                    cadastroForm.ApresentarMensagem("Sucesso na inserção do Desenvolvedor");
                     VoltarTela();
                 }
 
-
+                 
             }
             catch (Exception ex)
             {
                 cadastroForm.ApresentarMensagemErro("Erro na inserção" + ex);
             }
         }
+
         public void ConfigurarcBox()
         {
             List<string> opcoesSituacao = new List<string>
