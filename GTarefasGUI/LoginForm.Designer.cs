@@ -38,9 +38,9 @@
             // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.None;
+            button1.Anchor = AnchorStyles.Top;
             button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.BackColor = SystemColors.ButtonFace;
+            button1.BackColor = Color.FromArgb(192, 255, 192);
             button1.FlatAppearance.BorderColor = Color.White;
             button1.FlatAppearance.BorderSize = 60;
             button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
@@ -56,16 +56,18 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top;
             label1.Font = new Font("Segoe UI", 16F);
             label1.Location = new Point(284, 35);
             label1.Name = "label1";
             label1.Size = new Size(237, 30);
             label1.TabIndex = 1;
             label1.Text = "Gerenciador de Tarefas";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Location = new Point(229, 129);
             label2.Name = "label2";
@@ -75,6 +77,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Location = new Point(226, 189);
             label3.Name = "label3";
@@ -84,7 +87,7 @@
             // 
             // textBox1
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Anchor = AnchorStyles.Top;
             textBox1.Location = new Point(284, 126);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(241, 23);
@@ -92,14 +95,14 @@
             // 
             // textBox2
             // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Anchor = AnchorStyles.Top;
             textBox2.Location = new Point(284, 186);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(241, 23);
             textBox2.TabIndex = 5;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
-            // Form2
+            // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -110,7 +113,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button1);
-            Name = "Form2";
+            Name = "LoginForm";
             Text = "Form2";
             ResumeLayout(false);
             PerformLayout();

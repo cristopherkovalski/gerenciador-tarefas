@@ -154,6 +154,7 @@
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Location = new Point(424, 228);
             label7.Name = "label7";
@@ -163,6 +164,7 @@
             // 
             // textBoxCPF
             // 
+            textBoxCPF.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxCPF.Location = new Point(498, 133);
             textBoxCPF.Name = "textBoxCPF";
             textBoxCPF.Size = new Size(180, 23);
@@ -170,6 +172,7 @@
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Location = new Point(424, 136);
             label8.Name = "label8";
@@ -179,6 +182,7 @@
             // 
             // label9
             // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.Location = new Point(424, 128);
             label9.Name = "label9";
@@ -203,13 +207,15 @@
             // 
             // label11
             // 
+            label11.Anchor = AnchorStyles.Top;
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 16F);
-            label11.Location = new Point(288, 48);
+            label11.Location = new Point(296, 48);
             label11.Name = "label11";
             label11.Size = new Size(209, 30);
             label11.TabIndex = 21;
             label11.Text = "Cadastro de Usuário";
+            label11.TextAlign = ContentAlignment.TopCenter;
             // 
             // button1
             // 
@@ -224,6 +230,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.BackColor = Color.FromArgb(255, 192, 192);
             button2.ForeColor = SystemColors.ControlText;
             button2.Location = new Point(523, 368);
@@ -236,6 +243,7 @@
             // 
             // label12
             // 
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label12.AutoSize = true;
             label12.Location = new Point(424, 165);
             label12.Name = "label12";
@@ -245,6 +253,7 @@
             // 
             // textBoxEmail
             // 
+            textBoxEmail.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxEmail.Location = new Point(498, 162);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(180, 23);
@@ -252,6 +261,7 @@
             // 
             // labelTime
             // 
+            labelTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelTime.AutoSize = true;
             labelTime.Location = new Point(424, 194);
             labelTime.Name = "labelTime";
@@ -261,6 +271,7 @@
             // 
             // textBoxTime
             // 
+            textBoxTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxTime.Location = new Point(498, 191);
             textBoxTime.Name = "textBoxTime";
             textBoxTime.Size = new Size(180, 23);
@@ -268,6 +279,7 @@
             // 
             // comboBoxTipo
             // 
+            comboBoxTipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             comboBoxTipo.FormattingEnabled = true;
             comboBoxTipo.Location = new Point(523, 223);
             comboBoxTipo.Name = "comboBoxTipo";
@@ -308,6 +320,7 @@
             Controls.Add(label1);
             Name = "CadastroForm";
             Text = "Form1";
+            Load += CadastroForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

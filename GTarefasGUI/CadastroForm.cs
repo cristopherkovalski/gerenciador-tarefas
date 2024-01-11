@@ -49,64 +49,67 @@ namespace GTarefasGUI
                   string.IsNullOrWhiteSpace(this.textBoxEmail.Text) ||
                   string.IsNullOrWhiteSpace(this.comboBoxTipo.Text))
             {
-                
+
                 this.ApresentarMensagemErro("Por favor, preencha todos os campos obrigatórios.");
                 return null;
             }
-            else { 
-            string Nome = this.textBoxNome.Text;
-            string Sobrenome = this.textBoxSobrenome.Text;
-            string Logradouro = this.textBoxLogradouro.Text;
-            string Numero = this.textBoxNumero.Text;
-            string Cidade = this.textBoxCidade.Text;
-            string Estado = this.textBoxEstado.Text;
-            string CEP = this.textBoxCEP.Text;
-            string Time = this.textBoxTime.Text;
-            string CPF = this.textBoxCPF.Text;
-            Endereco Endereco = new Endereco(null, Logradouro, Cidade, Estado, CEP);
-            string tipoUsuario = this.comboBoxTipo.Text;
-            if (tipoUsuario == "Desenvolvedor")
+            else
             {
-                Desenvolvedor usuario = new Desenvolvedor(null, Nome, Sobrenome, Endereco, TipoUsuario.Desenvolvedor, CPF, Time, "Ativo", DateTime.Now, null);
-                return usuario;
-            }
-            else if (tipoUsuario == "TechLeader")
-            {
-                TechLeader usuario = new TechLeader(null, Nome, Sobrenome, Endereco, TipoUsuario.TechLeader, CPF, Time, "Ativo", DateTime.Now, null);
-                return usuario;
-            }
+                string Nome = this.textBoxNome.Text;
+                string Sobrenome = this.textBoxSobrenome.Text;
+                string Logradouro = this.textBoxLogradouro.Text;
+                string Numero = this.textBoxNumero.Text;
+                string Cidade = this.textBoxCidade.Text;
+                string Estado = this.textBoxEstado.Text;
+                string CEP = this.textBoxCEP.Text;
+                string Time = this.textBoxTime.Text;
+                string CPF = this.textBoxCPF.Text;
+                Endereco Endereco = new Endereco(null, Logradouro, Cidade, Estado, CEP);
+                string tipoUsuario = this.comboBoxTipo.Text;
+                if (tipoUsuario == "Desenvolvedor")
+                {
+                    Desenvolvedor usuario = new Desenvolvedor(null, Nome, Sobrenome, Endereco, TipoUsuario.Desenvolvedor, CPF, Time, "Ativo", DateTime.Now, null);
+                    return usuario;
+                }
+                else if (tipoUsuario == "TechLeader")
+                {
+                    TechLeader usuario = new TechLeader(null, Nome, Sobrenome, Endereco, TipoUsuario.TechLeader, CPF, Time, "Ativo", DateTime.Now, null);
+                    return usuario;
+                }
                 return null;
             }
-                
+
         }
 
         public Login GetLoginForm(int userId)
         {
-                if (string.IsNullOrWhiteSpace(this.textBoxEmail.Text) ||
-                  string.IsNullOrWhiteSpace(this.comboBoxTipo.Text))
+            if (string.IsNullOrWhiteSpace(this.textBoxEmail.Text) ||
+              string.IsNullOrWhiteSpace(this.comboBoxTipo.Text))
+            {
+                this.ApresentarMensagemErro("Por favor, preencha todos os campos obrigatórios.");
+                return null;
+            }
+            else
+            {
+                string email = this.textBoxEmail.Text;
+                string senha = GerarSenhaAleatoria(8);
+                string tipoUsuario = this.comboBoxTipo.Text;
+                if (tipoUsuario == "Desenvolvedor")
                 {
-                    this.ApresentarMensagemErro("Por favor, preencha todos os campos obrigatórios.");
-                    return null;
-                }else{
-                    string email = this.textBoxEmail.Text;
-                    string senha = GerarSenhaAleatoria(8);
-                    string tipoUsuario = this.comboBoxTipo.Text;
-                    if (tipoUsuario == "Desenvolvedor")
-                    {
-                        Login autenticacao = new Login(null, senha, email, TipoUsuario.Desenvolvedor, userId);
-                        return autenticacao;
-                    }
-                    else
-                    { 
-                        Login autenticacao = new Login(null, senha, email, TipoUsuario.TechLeader, userId);
-                        return autenticacao;
-                   
-                    }
+                    Login autenticacao = new Login(null, senha, email, TipoUsuario.Desenvolvedor, userId);
+                    return autenticacao;
                 }
+                else
+                {
+                    Login autenticacao = new Login(null, senha, email, TipoUsuario.TechLeader, userId);
+                    return autenticacao;
+
+                }
+            }
         }
 
 
-        
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -127,9 +130,9 @@ namespace GTarefasGUI
             MessageBox.Show(message, "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-     
 
-     
+
+
 
         static string GerarSenhaAleatoria(int comprimento)
         {
@@ -143,6 +146,11 @@ namespace GTarefasGUI
             }
 
             return new string(senha);
+        }
+
+        private void CadastroForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

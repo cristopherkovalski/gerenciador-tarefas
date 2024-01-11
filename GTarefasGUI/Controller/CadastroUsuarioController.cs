@@ -36,9 +36,6 @@ namespace GTarefasGUI.Controller
 
         }
 
-       
-    
-
         public void InserirUsuario()
         {
             try
@@ -57,7 +54,7 @@ namespace GTarefasGUI.Controller
                     int userid = usuarioDAO.InserirDesenvolvedor((TechLeader)usuario);
                     Login autenticacao = this.cadastroForm.GetLoginForm(userid);
                     loginDAO.InserirLogin(autenticacao);
-                    cadastroForm.ApresentarMensagem("Sucesso na inserção do Desenvolvedor");
+                    cadastroForm.ApresentarMensagem("Sucesso na inserção do Tech Leader");
                     VoltarTela();
                 }
 

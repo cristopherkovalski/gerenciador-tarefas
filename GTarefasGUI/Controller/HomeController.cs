@@ -125,7 +125,6 @@ namespace GTarefasMe.Controller
             {
                 List<Tarefa> listaTarefasFiltrada = new List<Tarefa>();
 
-                
                 switch (situacao.ToLower())
                 {
                     case "em andamento":
@@ -197,7 +196,6 @@ namespace GTarefasMe.Controller
                 Console.WriteLine(ex.Message);
             }
         }
-
         public void ConfigurarComboBox()
         {
             List<string> opcoesSituacao = new List<string>

@@ -41,6 +41,7 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Bottom;
             button1.BackColor = Color.FromArgb(192, 255, 192);
             button1.Location = new Point(344, 334);
             button1.Name = "button1";
@@ -52,6 +53,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Location = new Point(118, 134);
             label1.Name = "label1";
@@ -61,6 +63,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Location = new Point(118, 166);
             label2.Name = "label2";
@@ -70,6 +73,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(229, 237);
             comboBox1.Name = "comboBox1";
@@ -78,6 +82,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Location = new Point(118, 240);
             label3.Name = "label3";
@@ -87,6 +92,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top;
             textBox1.Location = new Point(229, 134);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(314, 23);
@@ -94,6 +100,7 @@
             // 
             // textBox2
             // 
+            textBox2.Anchor = AnchorStyles.Top;
             textBox2.Location = new Point(229, 163);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
@@ -102,6 +109,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label4.ForeColor = Color.ForestGreen;
@@ -113,6 +121,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Bottom;
             button2.BackColor = Color.FromArgb(255, 192, 192);
             button2.ForeColor = Color.Black;
             button2.Location = new Point(358, 377);

@@ -28,6 +28,9 @@
         /// </summary>
         public void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             button1 = new Button();
             button2 = new Button();
             dataGridViewTarefas = new DataGridView();
@@ -52,6 +55,7 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top;
             button1.Location = new Point(116, 132);
             button1.Name = "button1";
             button1.Size = new Size(94, 42);
@@ -61,6 +65,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top;
             button2.Location = new Point(565, 132);
             button2.Name = "button2";
             button2.Size = new Size(94, 42);
@@ -71,15 +76,42 @@
             // dataGridViewTarefas
             // 
             dataGridViewTarefas.AllowUserToOrderColumns = true;
+            dataGridViewTarefas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewTarefas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTarefas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridViewTarefas.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTarefas.Location = new Point(116, 225);
             dataGridViewTarefas.Name = "dataGridViewTarefas";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewTarefas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewTarefas.RowTemplate.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dataGridViewTarefas.Size = new Size(543, 183);
             dataGridViewTarefas.TabIndex = 2;
             dataGridViewTarefas.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button3
             // 
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button3.Location = new Point(696, 225);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
@@ -89,6 +121,7 @@
             // 
             // labelResponsavel
             // 
+            labelResponsavel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelResponsavel.AutoSize = true;
             labelResponsavel.Location = new Point(458, 248);
             labelResponsavel.Name = "labelResponsavel";
@@ -98,6 +131,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(144, 248);
             label2.Name = "label2";
@@ -107,6 +141,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.Location = new Point(144, 277);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
@@ -115,6 +150,7 @@
             // 
             // comboBoxResponsavel
             // 
+            comboBoxResponsavel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBoxResponsavel.FormattingEnabled = true;
             comboBoxResponsavel.Location = new Point(458, 277);
             comboBoxResponsavel.Name = "comboBoxResponsavel";
@@ -123,6 +159,7 @@
             // 
             // button4
             // 
+            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button4.Location = new Point(498, 373);
             button4.Name = "button4";
             button4.Size = new Size(75, 23);
@@ -133,6 +170,7 @@
             // 
             // button5
             // 
+            button5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button5.Location = new Point(696, 266);
             button5.Name = "button5";
             button5.Size = new Size(75, 23);
@@ -142,6 +180,7 @@
             // 
             // button6
             // 
+            button6.Anchor = AnchorStyles.Top;
             button6.Location = new Point(345, 133);
             button6.Name = "button6";
             button6.Size = new Size(94, 41);
@@ -151,6 +190,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(458, 196);
             comboBox2.Name = "comboBox2";
@@ -159,6 +199,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Location = new Point(346, 199);
             label3.Name = "label3";
@@ -168,6 +209,7 @@
             // 
             // comboBoxAltSituacao
             // 
+            comboBoxAltSituacao.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBoxAltSituacao.FormattingEnabled = true;
             comboBoxAltSituacao.Location = new Point(458, 329);
             comboBoxAltSituacao.Name = "comboBoxAltSituacao";
@@ -176,6 +218,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Location = new Point(498, 311);
             label4.Name = "label4";
@@ -185,6 +228,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 16F);
             label5.Location = new Point(355, 29);
@@ -195,6 +239,7 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Location = new Point(696, 29);
             label6.Name = "label6";
@@ -205,17 +250,18 @@
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(686, 54);
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label7.Location = new Point(696, 44);
             label7.Name = "label7";
-            label7.Size = new Size(44, 15);
+            label7.Size = new Size(69, 40);
             label7.TabIndex = 17;
             label7.Text = "default";
             // 
             // button7
             // 
+            button7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button7.BackColor = Color.FromArgb(255, 192, 192);
-            button7.Location = new Point(696, 72);
+            button7.Location = new Point(696, 78);
             button7.Name = "button7";
             button7.Size = new Size(69, 23);
             button7.TabIndex = 18;
