@@ -37,3 +37,7 @@ C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.csproj.
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.csproj.CopyComplete
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.exe
 C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.pdb
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\bin\Debug\GTarefasMe.exe.manifest
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\bin\Debug\GTarefasMe.application
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.exe.manifest
+C:\Users\T-GAMER\Source\Repos\GTarefasMe\GTarefasMe\obj\Debug\GTarefasMe.application
